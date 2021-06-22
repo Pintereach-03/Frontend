@@ -33,14 +33,13 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 // IMPORT COMPONENTS
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-import Home from "./components/Home";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 
 function App(props) {
-  // const logoutFunc = ()=> {
-  //   window.localStorage.removeItem("token");
-  //   props.clearState();
-  // }
+  const logoutFunc = ()=> {
+    window.localStorage.removeItem("token");
+  }
+  
   return (
     <div className="Nav">
       <Router>
@@ -50,8 +49,7 @@ function App(props) {
             {/* <Link to="/community">Community</Link> */}
             <Link to="/login">Login</Link>
             <Link to="/sign-up">Sign up</Link>
-            {/* onClick={logoutFunc} */}
-            <Link to="/">Sign out</Link>
+            <Link to="/login" onClick={logoutFunc}>Sign out</Link>
           </div>
         </header>
 
