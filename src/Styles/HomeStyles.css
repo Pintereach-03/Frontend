@@ -1,0 +1,129 @@
+/* reset styles  */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    /* border: 1px solid green; */
+  }
+  /* General Styles */
+  html {
+    font-size: 62.5%;
+  }
+  body {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    color: #4f4f4f;
+    font-family: "PT Sans", sans-serif;
+    /*Background Image*/
+    /* background-image: url(https://unsplash.com/photos/Acmjk3M5CX0); */
+    /*  background-size: cover;
+    background-repeat: none;
+    background-position: center top; */
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: 3px;
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  a {
+    width: 12%;
+    text-decoration: none; /*Still not removing text deco!!!:c */
+    color: Black;
+    margin: 1%;
+    text-align: center;
+  }
+  
+  div .menu {
+    height: 18vh;
+    display: flex;
+    padding: 1em;
+    background-color: #da2020ad;
+  }
+  a:hover {
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    transition: all 0.1s ease-in-out;
+  }
+  
+  /* ACTUAL HOMEPAGE STYLES */
+  .middle-section {
+    width: 90%;
+    display: flex;
+    align-self: center;
+    height: 50vh;
+  }
+  
+  .your-board {
+    width: 20%;
+  }
+  
+  li {
+    text-decoration: none;
+  }
+  
+  .add-article-btn button {
+    margin: 10px;
+    color: #fff;
+    background-color: rgba(115, 115, 211, 0.515);
+    width: 45%;
+    height: 5vh;
+    border-radius: 5%;
+  }
+  
+  button:hover {
+    background-color: rgb(255, 255, 255);
+    color: pink;
+    text-transform: uppercase;
+    transition: all 0.1s ease-in-out;
+    
+  }
+  
+  .article-cards div {
+    width: 100%;
+  }
+  .add-article-btn {
+    width: 60%;
+    margin: 2% 2%;
+  }
+  
+  div .article-cards {
+    width: 75%;
+    display: flex;
+    flex-wrap: row-wrap;
+  }
+  .card {
+    text-align: center;
+    width: 60%;
+    height: 10vh;
+    border: 1 px solid grey;
+    margin: 5% 5%;
+  }
+  
+  .btn {
+    padding: 5%;
+    margin: 2%;
+  }
+  
+  .middle-section {
+    width: 95%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  footer {
+    background-color: #dc313198;
+    color: white;
+    text-align: center;
+    margin-top: 20%;
+  }
