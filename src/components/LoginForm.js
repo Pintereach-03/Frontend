@@ -1,5 +1,5 @@
 import useStyles from "../Styles/LoginStyles.js";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { useHistory } from "react-router";
 
@@ -16,8 +16,8 @@ import { AccountCircle, Visibility, VisibilityOff } from "@material-ui/icons";
 
 //initial credentials
 const initialCredentials = {
-  username: "Test",
-  password: "1234"
+  username: "",
+  password: ""
 };
 
 const initialHelperText = {
@@ -45,10 +45,6 @@ const LoginForm = () => {
       // setError(err.message);
     });
   }
-
-  useEffect( ()=> {
-    
-  },[]);
 
   //view pass
   const handleShowPassword = (e) => {
