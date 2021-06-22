@@ -34,6 +34,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Home from "./components/Home";
+import PrivateRoute from "./components/Authentication/PrivateRoute";
 
 function App(props) {
   // const logoutFunc = ()=> {
@@ -59,7 +60,7 @@ function App(props) {
 
           <Route exact path="/login" component={LoginForm} />
 
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={PrivateRoute} />
         </Switch>
       </Router>
     </div>

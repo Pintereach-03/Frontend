@@ -123,39 +123,6 @@ const SignUpForm = () => {
                   )
                 }}
               />
-              <TextField
-                variant="filled"
-                className={`${classes.paperItem}`}
-                fullWidth
-                required
-                error={
-                  values.phoneNumber !== "" &&
-                  !values.phoneNumber.match(
-                    /^[(]{1}[0-9]{3}[)]{1}[0-9]{3}[-]{1}[0-9]{4}$/s
-                  )
-                }
-                helperText={
-                  values.phoneNumber !== "" &&
-                  !values.phoneNumber.match(
-                    /^[(]{1}[0-9]{3}[)]{1}[0-9]{3}[-]{1}[0-9]{4}$/s
-                  )
-                    ? "Required: e.g. (123)456-7890, include parenthesis and hyphen"
-                    : ""
-                }
-                label="Phone Number"
-                type="tel"
-                name="phoneNumber"
-                value={values.phoneNumber}
-                onChange={handleChange}
-                autoComplete="off"
-                InputProps={{
-                  endAdornment: (
-                    <IconButton>
-                      <PhoneIcon />
-                    </IconButton>
-                  )
-                }}
-              />
               <Button
                 className={`${classes.signUp}`}
                 size="large"

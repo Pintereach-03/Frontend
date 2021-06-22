@@ -1,5 +1,8 @@
 import useStyles from "../Styles/LoginStyles.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useHistory } from "react-router";
+
 import {
   Paper,
   Grid,
@@ -11,10 +14,10 @@ import {
 } from "@material-ui/core";
 import { AccountCircle, Visibility, VisibilityOff } from "@material-ui/icons";
 
-//initial values
-const initialValues = {
-  username: "",
-  password: ""
+//initial credentials
+const initialCredentials = {
+  username: "Test",
+  password: "1234"
 };
 
 const initialHelperText = {
@@ -23,11 +26,29 @@ const initialHelperText = {
 };
 
 const LoginForm = () => {
+  const { push } = useHistory();
   const classes = useStyles();
   //set state
   const [showPassword, setShowPassword] = useState(false);
-  const [values, setValues] = useState(initialValues);
+  const [credentials, setCredentials] = useState(initialCredentials);
   const [helperText, setHelperText] = useState(initialHelperText);
+
+  const submitLogin = () => {
+    axios.post('https://pintereach-03.herokuapp.com/api/auth/login', credentials)
+    .then(res=>{
+      console.log(res);
+      localStorage.setItem("token", res.data.token);
+      push('/')
+    })
+    .catch(err=>{
+      console.log(err)
+      // setError(err.message);
+    });
+  }
+
+  useEffect( ()=> {
+    
+  },[]);
 
   //view pass
   const handleShowPassword = (e) => {
@@ -37,7 +58,7 @@ const LoginForm = () => {
   //onChange -> use spread op
   const onChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+    setCredentials({ ...credentials, [name]: value });
   };
 
   //onSubmit?
@@ -45,13 +66,14 @@ const LoginForm = () => {
     e.preventDefault();
     if (
       // between 3-20 characters
-      values.username.match(/^\w{3,20}$/g) &&
-      values.password.match(/^[.\S]{3,20}$/g)
+      credentials.username.match(/^\w{3,20}$/g) &&
+      credentials.password.match(/^[.\S]{3,20}$/g)
     ) {
-      setValues(initialValues);
-      console.log(values);
+      setCredentials(initialCredentials);
+      submitLogin();
+      console.log(credentials);
     } else {
-      setValues(initialValues);
+      setCredentials(initialCredentials);
       setHelperText({
         username: "Invalid Username. Please try again.",
         password: "Invalid Password. Please try again."
@@ -84,7 +106,7 @@ const LoginForm = () => {
                 type="text"
                 label="Username"
                 name="username"
-                value={values.username}
+                value={credentials.username}
                 onChange={onChange}
                 autoComplete="off"
                 InputProps={{
@@ -104,7 +126,7 @@ const LoginForm = () => {
                 label="Password"
                 type={showPassword ? "text" : "password"}
                 name="password"
-                value={values.password}
+                value={credentials.password}
                 onChange={onChange}
                 autoComplete="off"
                 InputProps={{
