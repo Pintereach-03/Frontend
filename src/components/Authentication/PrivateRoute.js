@@ -14,9 +14,9 @@ const PrivateRoute = () => {
         const isLogin = async () => {
             try {
                 await axiosWithAuth().get('https://pintereach-03.herokuapp.com/api/articles');
-                setElement(<Manager />)
+                setElement(<Manager />);
             }catch(err) {
-                setElement(<Redirect to="/login" />)
+                setElement(<Redirect to="/login" />);
             }
         };
         isLogin();

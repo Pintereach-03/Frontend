@@ -1,6 +1,6 @@
 import React from "react";
 
-const Home = () => {
+const Manager = () => {
   return (
     <div id="main">
       <div className="add-article-btn">
@@ -36,4 +36,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Manager;
