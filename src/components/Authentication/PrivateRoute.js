@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 
 import axiosWithAuth from '../helpers/axiosWithAuth';
 
-import Home from '../Home';
+import Manager from '../Manager';
 
 const PrivateRoute = () => {
     const [element, setElement] = useState();
@@ -14,14 +14,14 @@ const PrivateRoute = () => {
         const isLogin = async () => {
             try {
                 await axiosWithAuth().get('https://pintereach-03.herokuapp.com/api/articles');
-                setElement(<Home />)
+                setElement(<Manager />)
             }catch(err) {
                 setElement(<Redirect to="/login" />)
             }
-        }
+        };
         isLogin();
     }, []);
-    
+
     return(
         <div>
             {element}

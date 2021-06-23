@@ -1,33 +1,7 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import React from "react";
+import React, { Fragment } from "react";
 // import "./styles.css";
 import "./Styles/HomeStyles.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, useHistory } from "react-router-dom";
 // import { connect } from "react-redux";
 
 // IMPORT COMPONENTS
@@ -37,33 +11,52 @@ import Home from "./components/Home";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 
 function App(props) {
-  // const logoutFunc = ()=> {
-  //   window.localStorage.removeItem("token");
-  //   props.clearState();
-  // }
+  const { push } = useHistory();
+
+  const logoutFunc = ()=> {
+    window.localStorage.removeItem("token");
+    // window.location.reload();
+    push('/');
+  };
+
   return (
-    <div className="Nav">
-      <Router>
-        <header>
-          <div className="menu">
-            <Link to="/">Home</Link>
-            {/* <Link to="/community">Community</Link> */}
-            <Link to="/login">Login</Link>
-            <Link to="/sign-up">Sign up</Link>
-            {/* onClick={logoutFunc} */}
-            <Link to="/">Sign out</Link>
-          </div>
-        </header>
+    <Fragment>
+      <header>
+        <div className="menu">
+          <Link to="/">Home</Link>
+          <Link to="/manager">Manager</Link>
+          {/* <Link to="/community">Community</Link> */}
+          <Link to="/login">Login</Link>
+          <Link to="/register">Sign up</Link>
+          <Link to="/" onClick={logoutFunc}>Sign out</Link>
+        </div>
+      </header>
 
-        <Switch>
-          <Route exact path="/sign-up" component={SignUpForm} />
+      <Switch>
+        <Route exact path="/register" component={SignUpForm} />
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/manager" component={PrivateRoute} />
+        <Route exact path="/" component={Home} />
+      </Switch>
 
-          <Route exact path="/login" component={LoginForm} />
-
-          <Route exact path="/" component={PrivateRoute} />
-        </Switch>
-      </Router>
-    </div>
+      <footer>
+        <h2> Copyright</h2>
+        <address>
+          Written by{" "}
+          <a href="mailto:webmaster@example.com">
+            {" "}
+            Chelsea Ceballos, Ryan L. Spivey, Hugo Sanchez Orozco{" "}
+          </a>
+          .<br />
+          Visit us at: <br />
+          Example.com
+          <br />
+          123 Washington Street
+          <br />
+          CA, USA
+        </address>
+      </footer>
+    </Fragment>
   );
 }
 

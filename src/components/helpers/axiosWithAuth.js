@@ -8,6 +8,6 @@ const axiosWithAuth = () => {
             authorization: token
         }
     });
-}
+};
 
 export default axiosWithAuth;
