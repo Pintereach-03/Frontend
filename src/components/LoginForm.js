@@ -27,6 +27,7 @@ const initialHelperText = {
 
 const LoginForm = () => {
   const { push } = useHistory();
+
   const classes = useStyles();
   //set state
   const [showPassword, setShowPassword] = useState(false);
@@ -38,13 +39,13 @@ const LoginForm = () => {
     .then(res=>{
       console.log(res);
       localStorage.setItem("token", res.data.token);
-      push('/')
+      push('/manager');
     })
     .catch(err=>{
-      console.log(err)
+      console.log(err);
       // setError(err.message);
     });
-  }
+  };
 
   //view pass
   const handleShowPassword = (e) => {
@@ -78,6 +79,10 @@ const LoginForm = () => {
     }
   };
 
+  const handleClick = () => {
+    push('/register');
+  };
+
   // inputs and submit buttons
   return (
     <>
@@ -95,7 +100,7 @@ const LoginForm = () => {
             <Grid container className={classes.formGrid}>
               <TextField
                 variant="filled"
-                className={`${classes.paperItem}`}
+                className={classes.paperItem}
                 fullWidth
                 required
                 helperText={helperText.username}
@@ -115,7 +120,7 @@ const LoginForm = () => {
               />
               <TextField
                 variant="filled"
-                className={`${classes.paperItem}`}
+                className={classes.paperItem}
                 fullWidth
                 required
                 helperText={helperText.password}
@@ -134,7 +139,7 @@ const LoginForm = () => {
                 }}
               />
               <Button
-                className={`${classes.login}`}
+                className={classes.login}
                 size="large"
                 variant="contained"
                 type="submit"
@@ -143,6 +148,19 @@ const LoginForm = () => {
               </Button>
             </Grid>
           </form>
+          <Grid container className={classes.haveAccount}>
+            <Typography className={classes.paperItem}>
+                Don't have an account?
+            </Typography>
+            <Button
+              className={classes.paperItem}
+              size="large"
+              variant="outlined"
+              onClick={handleClick}
+            >
+              Sign Up
+            </Button>
+          </Grid>
         </Paper>
       </Grid>
     </>

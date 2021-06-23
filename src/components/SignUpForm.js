@@ -19,8 +19,9 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const classes = useStyles();
   const { push } = useHistory();
+
+  const classes = useStyles();
 
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState(initialValues);
@@ -29,13 +30,13 @@ const SignUpForm = () => {
     axios.post('https://pintereach-03.herokuapp.com/api/auth/register', credentials)
     .then(res=>{
       console.log(res);
-      push('/login')
+      push('/login');
     })
     .catch(err=>{
-      console.log(err)
+      console.log(err);
       // setError(err.message);
     });
-  }
+  };
 
   const handleShowPassword = (e) => {
     setShowPassword(!showPassword);
@@ -58,6 +59,10 @@ const SignUpForm = () => {
     return;
   };
 
+  const handleClick = () => {
+    push('/login');
+  };
+
   return (
     <>
       <Grid container className={classes.root}>
@@ -67,20 +72,14 @@ const SignUpForm = () => {
               variant="h3"
               className={`${classes.topText} ${classes.paperItem}`}
             >
-              Sign-Up
-            </Typography>
-            <Typography
-              variant="h6"
-              className={`${classes.topText} ${classes.paperItem}`}
-            >
-              New user
+              Sign Up
             </Typography>
           </Grid>
           <form onSubmit={handleSubmit}>
             <Grid container className={classes.formGrid}>
               <TextField
                 variant="filled"
-                className={`${classes.paperItem}`}
+                className={classes.paperItem}
                 fullWidth
                 required
                 error={
@@ -109,7 +108,7 @@ const SignUpForm = () => {
               />
               <TextField
                 variant="filled"
-                className={`${classes.paperItem}`}
+                className={classes.paperItem}
                 fullWidth
                 required
                 error={
@@ -137,23 +136,24 @@ const SignUpForm = () => {
                 }}
               />
               <Button
-                className={`${classes.signUp}`}
+                className={classes.signUp}
                 size="large"
                 variant="contained"
                 type="submit"
               >
-                Sign-Up
+                Sign Up
               </Button>
             </Grid>
           </form>
           <Grid container className={classes.haveAccount}>
-            <Typography className={`${classes.paperItem}`}>
+            <Typography className={classes.paperItem}>
               Already have an account?
             </Typography>
             <Button
-              className={`${classes.paperItem}`}
+              className={classes.paperItem}
               size="large"
               variant="outlined"
+              onClick={handleClick}
             >
               Login
             </Button>
