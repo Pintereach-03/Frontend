@@ -1,5 +1,6 @@
 import useStyles from "../Styles/LoginStyles.js";
 import React, { useState } from "react";
+import axios from 'axios';
 import { useHistory } from "react-router";
 import {
   Paper,
@@ -11,12 +12,10 @@ import {
   // makeStyles
 } from "@material-ui/core";
 import { AccountCircle, Visibility, VisibilityOff } from "@material-ui/icons";
-import PhoneIcon from "@material-ui/icons/Phone";
 
 const initialValues = {
   username: "",
-  password: "",
-  phoneNumber: ""
+  password: ""
 };
 
 const SignUpForm = () => {
@@ -25,7 +24,19 @@ const SignUpForm = () => {
   const classes = useStyles();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [values, setValues] = useState(initialValues);
+  const [credentials, setCredentials] = useState(initialValues);
+
+  const submitSignup = () => {
+    axios.post('https://pintereach-03.herokuapp.com/api/auth/register', credentials)
+    .then(res=>{
+      console.log(res);
+      push('/login');
+    })
+    .catch(err=>{
+      console.log(err);
+      // setError(err.message);
+    });
+  };
 
   const handleShowPassword = (e) => {
     setShowPassword(!showPassword);
@@ -33,23 +44,22 @@ const SignUpForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+    setCredentials({ ...credentials, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      values.username.match(/^\w{5,11}$/g) &&
-      values.password.match(/^[.\S]{7,15}$/g) &&
-      values.phoneNumber.match(/^[(]{1}[0-9]{3}[)]{1}[0-9]{3}[-]{1}[0-9]{4}$/s)
+      credentials.username.match(/^\w{5,11}$/g) &&
+      credentials.password.match(/^[.\S]{7,15}$/g)
     ) {
-      console.log(values);
+      submitSignup();
+      console.log(credentials);
     }
     return;
   };
 
   const handleClick = () => {
-    // console.log('clicked login');
     push('/login');
   };
 
@@ -73,19 +83,19 @@ const SignUpForm = () => {
                 fullWidth
                 required
                 error={
-                  values.username !== "" &&
-                  !values.username.match(/^\w{5,11}$/g)
+                  credentials.username !== "" &&
+                  !credentials.username.match(/^\w{5,11}$/g)
                 }
                 helperText={
-                  values.username !== "" &&
-                  !values.username.match(/^\w{5,11}$/g)
+                  credentials.username !== "" &&
+                  !credentials.username.match(/^\w{5,11}$/g)
                     ? "Required: 5-11 characters, no special characters (except underscore), no spaces"
                     : ""
                 }
                 type="text"
                 label="Username"
                 name="username"
-                value={values.username}
+                value={credentials.username}
                 onChange={handleChange}
                 autoComplete="off"
                 InputProps={{
@@ -102,19 +112,19 @@ const SignUpForm = () => {
                 fullWidth
                 required
                 error={
-                  values.password !== "" &&
-                  !values.password.match(/^[.\S]{7,15}$/g)
+                  credentials.password !== "" &&
+                  !credentials.password.match(/^[.\S]{7,15}$/g)
                 }
                 helperText={
-                  values.password !== "" &&
-                  !values.password.match(/^[.\S]{7,15}$/g)
+                  credentials.password !== "" &&
+                  !credentials.password.match(/^[.\S]{7,15}$/g)
                     ? "Required: 7-15 characters, special characters allowed, no spaces"
                     : ""
                 }
                 label="Password"
                 type={showPassword ? "text" : "password"}
                 name="password"
-                value={values.password}
+                value={credentials.password}
                 onChange={handleChange}
                 autoComplete="off"
                 InputProps={{

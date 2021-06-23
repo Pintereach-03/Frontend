@@ -1,22 +1,18 @@
 import React, { Fragment } from "react";
 // import "./styles.css";
 import "./Styles/HomeStyles.css";
-import { Route, Switch, Link, useHistory } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 // import { connect } from "react-redux";
 
 // IMPORT COMPONENTS
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-import Home from "./components/Home";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
+import Home from "./components/Home";
 
 function App(props) {
-  const { push } = useHistory();
-
   const logoutFunc = ()=> {
     window.localStorage.removeItem("token");
-    // window.location.reload();
-    push('/');
   };
 
   return (
