@@ -7,6 +7,7 @@ const Navbar = (props) => {
   
     const logoutFunc = ()=> {
         window.localStorage.removeItem("token");
+        window.localStorage.removeItem("userId");
         checkForToken();
     };
 

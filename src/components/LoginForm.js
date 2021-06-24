@@ -13,6 +13,7 @@ import {
   // makeStyles
 } from "@material-ui/core";
 import { AccountCircle, Visibility, VisibilityOff } from "@material-ui/icons";
+import axiosWithAuth from "./helpers/axiosWithAuth.js";
 
 //initial credentials
 const initialCredentials = {
@@ -39,10 +40,20 @@ const LoginForm = (props) => {
   const [helperText, setHelperText] = useState(initialHelperText);
   const [error, setError] = useState();
 
+  const setUserIdToStorage = (username) => {
+    axiosWithAuth().get('https://pintereach-03.herokuapp.com/api/users')
+    .then(res => {
+      const users = res.data;
+      const user = users.filter(user => user.username === username)[0];
+      localStorage.setItem("userId", user.id);
+    })
+  };
+
   const submitLogin = () => {
     axios.post('https://pintereach-03.herokuapp.com/api/auth/login', credentials)
     .then(res=>{
       localStorage.setItem("token", res.data.token);
+      setUserIdToStorage(credentials.username);
       checkForToken();
       push('/manager');
     })

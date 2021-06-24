@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axiosWithAuth from "./helpers/axiosWithAuth";
 
 const Manager = () => {
+  const [userId] = useState(window.localStorage.getItem("userId"));
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    axiosWithAuth().get(`https://pintereach-03.herokuapp.com/api/categories`)
+    .then(res => {
+      const usersCategories = res.data.filter(category => category.user_id == userId);
+      setCategories(usersCategories);
+    })
+  }
+
+  const addCategory = (categoryName) => {
+    const category = { name: categoryName }
+
+    axiosWithAuth().post('https://pintereach-03.herokuapp.com/api/categories', category)
+    .then(res=>{
+      getCategories();
+      console.log(res)
+    })
+    .catch(err=>{
+      console.log(err)
+    });
+  }
+
+  useEffect(() => {
+    getCategories();
+  },[]);
+
   return (
     <div id="main">
       <div className="add-article-btn">
@@ -10,11 +39,7 @@ const Manager = () => {
         <div className="your-board">
           <h4>Your Board</h4>
           <ul>
-            <li> category 1</li>
-            <li> category 2</li>
-            <li> category 3</li>
-            <li> category 4</li>
-            <li> category 5</li>
+            {categories.map((category) => <li>{category.name}</li>)}
           </ul>
         </div>
         <div className="article-cards">
