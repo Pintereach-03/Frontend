@@ -12,15 +12,18 @@ const useStyles = makeStyles({
   },
   paper: {
     width: "30%",
-    margin: "10%",
-    
+    margin: "12%",
+    border: "1px solid yellow",
     padding: "1%",
     // Gradient for div
     background: "linear-gradient(20deg, #FAA0A0 10%, #D70040 90%)",
     boxShadow: "5px 4px 5px 4px rgba(227, 11, 92, .3)",
-    borderRadius: "20px"
+    borderRadius: "20px",
+    // flex: "auto",
   },
   paperItem: {
+    border: "1px solid blue",
+    fontWeight: "bold",
     color: "#fff",
     marginTop: "7%",
     marginBottom: "2%"
@@ -35,8 +38,8 @@ const useStyles = makeStyles({
   },
   login: {
     color: "red",
-    marginTop: "7%",
-    marginBottom: "2%"
+    marginTop: "1%",
+    marginBottom: "1%"
   },
 
   signUp: {

@@ -4,7 +4,7 @@
     padding: 0;
     margin: 0;
     max-width: 100%;
-    /* border: 1px solid yellow; */
+    border: 1px solid yellow;
   }
   /* General Styles */
   html {
@@ -50,8 +50,10 @@
   
   }
   
-  div .menu {
+  .menu {
+    overflow: hidden;
     position: fixed;
+    top:0;
     height: 10vh;
     display: flex;
     padding: 1em;
@@ -95,7 +97,7 @@
   
   button:hover {
     background-color: rgb(255, 255, 255);
-    color: pink;
+    color: rgb(53, 0, 88);
     text-transform: uppercase;
     transition: all 0.1s ease-in-out;
     
