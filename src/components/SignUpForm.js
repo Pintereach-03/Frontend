@@ -33,7 +33,6 @@ const SignUpForm = () => {
       push('/login');
     })
     .catch(err=>{
-      console.log(err);
       // setError(err.message);
     });
   };
@@ -54,7 +53,6 @@ const SignUpForm = () => {
       credentials.password.match(/^[.\S]{7,15}$/g)
     ) {
       submitSignup();
-      console.log(credentials);
     }
     return;
   };
