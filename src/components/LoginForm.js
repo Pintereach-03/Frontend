@@ -37,6 +37,7 @@ const LoginForm = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState(initialCredentials);
   const [helperText, setHelperText] = useState(initialHelperText);
+  const [error, setError] = useState();
 
   const submitLogin = () => {
     axios.post('https://pintereach-03.herokuapp.com/api/auth/login', credentials)
@@ -46,8 +47,7 @@ const LoginForm = (props) => {
       push('/manager');
     })
     .catch(err=>{
-      console.log(err);
-      // setError(err.message);
+      setError(err.message);
     });
   };
 
@@ -141,6 +141,9 @@ const LoginForm = (props) => {
                   )
                 }}
               />
+              <Typography className={classes.paperItem}>
+                {error}
+              </Typography>
               <Button
                 className={classes.login}
                 size="large"
