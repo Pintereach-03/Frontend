@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
+    //get props
     const { isLogin, checkForToken } = props;
   
     const logoutFunc = ()=> {

@@ -26,10 +26,10 @@ const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState(initialValues);
 
+
   const submitSignup = () => {
     axios.post('https://pintereach-03.herokuapp.com/api/auth/register', credentials)
     .then(res=>{
-      console.log(res);
       push('/login');
     })
     .catch(err=>{
