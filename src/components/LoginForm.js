@@ -37,7 +37,6 @@ const LoginForm = () => {
   const submitLogin = () => {
     axios.post('https://pintereach-03.herokuapp.com/api/auth/login', credentials)
     .then(res=>{
-      console.log(res);
       localStorage.setItem("token", res.data.token);
       push('/manager');
     })
@@ -68,7 +67,6 @@ const LoginForm = () => {
     ) {
       setCredentials(initialCredentials);
       submitLogin();
-      console.log(credentials);
     } else {
       setCredentials(initialCredentials);
       setHelperText({
