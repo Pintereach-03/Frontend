@@ -1,19 +1,20 @@
 //styles sheet
 import { makeStyles } from "@material-ui/core";
-// import bannerImg from "../images/pinkSheet.jpeg";
+import bannerImg from "./gradient.jpeg";
 
 const useStyles = makeStyles({
   root: {
     flexFlow: "column",
     alignItems: "center",
     height: "100vh",
-    // backgroundImage: `url(${bannerImg})`,
+    backgroundImage: `url(${bannerImg})`,
     backgroundSize: "cover"
   },
   paper: {
     width: "30%",
-    marginTop: "12%",
-    padding: "2%",
+    margin: "10%",
+    
+    padding: "1%",
     // Gradient for div
     background: "linear-gradient(20deg, #FAA0A0 10%, #D70040 90%)",
     boxShadow: "5px 4px 5px 4px rgba(227, 11, 92, .3)",

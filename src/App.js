@@ -19,6 +19,7 @@ function App(props) {
     <Fragment>
       <header>
         <div className="menu">
+        
           <Link to="/">Home</Link>
           <Link to="/manager">Manager</Link>
           {/* <Link to="/community">Community</Link> */}
@@ -37,13 +38,13 @@ function App(props) {
 
       <footer>
         <h2> Copyright</h2>
+        <br />
         <address>
-          Written by{" "}
-          <a href="mailto:webmaster@example.com">
-            {" "}
+          <p>
+          Written by
             Chelsea Ceballos, Ryan L. Spivey, Hugo Sanchez Orozco{" "}
-          </a>
-          .<br />
+          </p>
+          
           Visit us at: <br />
           Example.com
           <br />
