@@ -25,10 +25,14 @@ const initialHelperText = {
   password: ""
 };
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const { push } = useHistory();
 
   const classes = useStyles();
+
+  //get props
+  const { checkForToken } = props;
+
   //set state
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState(initialCredentials);
@@ -38,6 +42,7 @@ const LoginForm = () => {
     axios.post('https://pintereach-03.herokuapp.com/api/auth/login', credentials)
     .then(res=>{
       localStorage.setItem("token", res.data.token);
+      checkForToken();
       push('/manager');
     })
     .catch(err=>{
