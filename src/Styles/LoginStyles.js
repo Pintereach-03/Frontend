@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   paper: {
     width: "30%",
     margin: "12%",
-    border: "1px solid yellow",
+    
     padding: "1%",
     // Gradient for div
     background: "linear-gradient(20deg, #FAA0A0 10%, #D70040 90%)",
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     // flex: "auto",
   },
   paperItem: {
-    border: "1px solid blue",
+   
     fontWeight: "bold",
     color: "#fff",
     marginTop: "7%",
