@@ -1,33 +1,23 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 // import "./styles.css";
 import "./Styles/HomeStyles.css";
 import { Route, Switch, Link } from "react-router-dom";
 // import { connect } from "react-redux";
 
 // IMPORT COMPONENTS
+import Navbar from './components/Navbar';
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import Home from "./components/Home";
 
 function App(props) {
-  const logoutFunc = ()=> {
-    window.localStorage.removeItem("token");
-  };
+ 
 
   return (
     <Fragment>
-      <header>
-        <div className="menu">
-        
-          <Link to="/">Home</Link>
-          <Link to="/manager">Manager</Link>
-          {/* <Link to="/community">Community</Link> */}
-          <Link to="/login">Login</Link>
-          <Link to="/register">Sign up</Link>
-          <Link to="/" onClick={logoutFunc}>Sign out</Link>
-        </div>
-      </header>
+      
+      <Navbar />
 
       <Switch>
         <Route exact path="/register" component={SignUpForm} />
@@ -57,9 +47,4 @@ function App(props) {
   );
 }
 
-// const mapStateToProps = (state)=>{
-//   return(state)
-// }
-
-// export default connect(mapStateToProps, {clearState})(App);
 export default App;
