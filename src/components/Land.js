@@ -1,11 +1,9 @@
 import React from "react";
 import "../Styles/LandingPage.css";
 
-import pic01 from "../images/pic01.jpg";
-import pic02 from "../images/pic02.jpg";
-import pic03 from "../images/pic03.jpg";
+import screen from "../images/screen.jpg";
 
-const Home = () => {
+const Land = () => {
 
   return (
     <div id="home">
@@ -19,15 +17,7 @@ const Home = () => {
       </div>
       <section id="home-section">
         <div className="home-div">
-          <img alt="Article 1" src={pic01} />
-          {/* <p>Test</p> */}
-        </div>
-        <div className="home-div">
-          <img alt="Article 2" src={pic02} />
-          {/* <p>Test</p> */}
-        </div>
-        <div className="home-div">
-          <img alt="Article 3" src={pic03} />
+          <img alt="Article Screen" src={screen} />
           {/* <p>Test</p> */}
         </div>
       </section>
@@ -36,4 +26,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Land;

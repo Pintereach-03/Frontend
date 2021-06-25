@@ -1,0 +1,190 @@
+#main {
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Category */
+
+.add-category {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.add-category h2 {
+    text-shadow: 0 0 5px black;
+    margin-bottom: 2%;
+}
+
+.add-category form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-category form input {
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+.add-category form input:focus {
+    outline: none;
+}
+
+.add-category form button {
+    padding: 2%;
+    background-color: black;
+    color: white;
+    margin-bottom: 2%;
+    transition: ease-in-out 0.2s;
+}
+
+.add-category form button:hover {
+    background-color: #808080;
+    cursor: pointer;
+}
+
+/*  */
+
+.categories-card {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.categories-card h2 {
+    text-shadow: 0 0 5px black;
+    margin: 2% 0;
+}
+
+.categories-card h2:hover {
+    cursor: default;
+}
+
+#categories-dropdown {
+    margin-top: 2%;
+    padding: 2%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#categories-dropdown:focus {
+    outline: none;
+}
+
+#categories-dropdown:hover {
+    cursor: pointer;
+}
+
+#categories-green {
+    padding: 2%;
+    width: 50%;
+    background-color: #00FF00;
+    color: black;
+    transition: ease-in-out 0.2s;
+}
+
+#categories-green:hover {
+    background-color: #808080;
+    cursor: pointer;
+}
+
+#categories-red {
+    margin-top: 2%;
+    padding: 2%;
+    width: 50%;
+    background-color: #FF0000;
+    color: black;
+    transition: ease-in-out 0.2s;
+}
+
+#categories-red:hover {
+    background-color: #808080;
+    cursor: pointer;
+}
+
+/* Article */
+
+.add-article {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.add-article h2 {
+    text-shadow: 0 0 5px black;
+    margin-bottom: 2%;
+}
+
+.add-article form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-article form input {
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+.add-article form input:focus {
+    outline: none;
+}
+
+.add-article form select {
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+.add-article form select:focus {
+    outline: none;
+}
+
+.add-article form select:hover {
+    cursor: pointer;
+}
+
+.add-article form button {
+    padding: 2%;
+    background-color: black;
+    color: white;
+    transition: ease-in-out 0.2s;
+}
+
+.add-article form button:hover {
+    background-color: #808080;
+    cursor: pointer;
+}
+
+.articles-card {
+    height: 100%;
+}
+
+.articles-card .card {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 1%;
+}
+
+.articles-section {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
+    box-shadow: 0 0 10px black;
+}
+
+.articles-section button {
+    padding: 2%;
+    background-color: black;
+    color: white;
+    transition: ease-in-out 0.2s;
+}
+
+.articles-section button:hover {
+    background-color: #808080;
+    cursor: pointer;
+}

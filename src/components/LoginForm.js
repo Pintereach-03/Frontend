@@ -46,7 +46,7 @@ const LoginForm = (props) => {
       const users = res.data;
       const user = users.filter(user => user.username === username)[0];
       localStorage.setItem("userId", user.id);
-    })
+    });
   };
 
   const submitLogin = () => {

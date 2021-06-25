@@ -10,28 +10,28 @@ const AddArticle = (props) => {
     const getArticles = () => {
         axiosWithAuth().get('https://pintereach-03.herokuapp.com/api/articles')
         .then(res=>{
-          console.log(res)
+          console.log(res);
         })
         .catch(err=>{
-          console.log(err)
+          console.log(err);
         });
-    }
+    };
 
     const addArticle = (article) => {
         axiosWithAuth().post('https://pintereach-03.herokuapp.com/api/articles', article)
         .then(res=>{
-          console.log(res)
+          console.log(res);
         })
         .catch(err=>{
-          console.log(err)
+          console.log(err);
         });
         getArticles();
-      }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         addArticle(values);
-    }
+    };
 
     const onChange = (e) => {
         let value = e.target.value;
@@ -39,11 +39,12 @@ const AddArticle = (props) => {
         setValues({
             ...values,
             [e.target.name]: value
-            });
+        });
     };
 
     return(
         <div className="add-article">
+            <h2>Article Form</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -73,9 +74,8 @@ const AddArticle = (props) => {
                     <option key="placeholder">---</option>
                     {categories.map(category=><option key={category.name}>{category.name}</option>)}
                 </select>
-                <button>Add</button>
+                <button>Add Article</button>
             </form>
-            
         </div>
     )
 }
