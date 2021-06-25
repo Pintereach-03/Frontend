@@ -46,6 +46,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   margin-top: 15vh;
+  margin-bottom: -15vh;
   /* background-color: violet; */
   align-self:center;
   margin-left: 10%;

@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 
 // IMPORT COMPONENTS
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
@@ -40,23 +41,7 @@ function App(props) {
         <Route path="/*" component={Error}/>
       </Switch>
 
-      <footer>
-        <h2> Copyright</h2>
-        <br />
-        <address>
-          <p>
-          Written by
-            Chelsea Ceballos, Ryan L. Spivey, Hugo Sanchez Orozco{" "}
-          </p>
-
-          Visit us at: <br />
-          Example.com
-          <br />
-          123 Washington Street
-          <br />
-          CA, USA
-        </address>
-      </footer>
+      <Footer />
     </Fragment>
   );
 }

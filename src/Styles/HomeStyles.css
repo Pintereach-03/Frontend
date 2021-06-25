@@ -70,78 +70,70 @@ a:hover {
 }
 
 /* ACTUAL HOMEPAGE STYLES */
-.middle-section {
+/* .middle-section {
   width: 90%;
   display: flex;
   align-self: center;
   height: 50vh;
-}
+} */
 
-.your-board {
-  width: 20%;
-}
-
-i {
+/* i {
   color: white;
-}
+} */
 
-.add-article-btn button {
+/* .add-article-btn button {
   margin: 50px;
   color: #fff;
   background-color: rgba(115, 115, 211, 0.515);
   width: 45%;
   height: 5vh;
   border-radius: 5%;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(53, 0, 88);
-  text-transform: uppercase;
   transition: all 0.1s ease-in-out;
+} */
 
-}
-
-.article-cards div {
+/* .article-cards div {
   width: 100%;
 }
 .add-article-btn {
   width: 60%;
   margin: 2% 2%;
-}
+} */
 
-div .article-cards {
+/* div .article-cards {
   width: 75%;
   display: flex;
   flex-wrap: row-wrap;
-}
-.card {
+} */
+/* .card {
   text-align: center;
   width: 60%;
   height: 10vh;
   border: 1 px solid grey;
   margin: 5% 5%;
-}
+} */
 
-.btn {
+/* .btn {
   padding: 5%;
   margin: 2%;
-}
+} */
 
-.middle-section {
+/* .middle-section {
   width: 95%;
-  margin-left: 5%;
+  margin-left: 2.5%;
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
 footer {
-  /* position: fixed; */
-  margin-top: -10vh;
+  position: relative;
   bottom: 0;
   width: 100%;
   background-color:#d70040a8;
   color: #CDE0D2;
   text-align: center;
-  /* margin-top: 20%; */
 }
