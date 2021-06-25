@@ -18,7 +18,6 @@ const AddArticle = (props) => {
     }
 
     const addArticle = (article) => {
-        console.log(article)
         axiosWithAuth().post('https://pintereach-03.herokuapp.com/api/articles', article)
         .then(res=>{
           console.log(res)
@@ -74,8 +73,6 @@ const AddArticle = (props) => {
                     <option key="placeholder">---</option>
                     {categories.map(category=><option key={category.name}>{category.name}</option>)}
                 </select>
-
-                <button>Close</button>
                 <button>Add</button>
             </form>
             

@@ -1,10 +1,36 @@
 import React, { useState, useEffect } from "react";
-import AddArticle from "./AddArticle";
+import AddArticleForm from "./AddArticleForm";
+import Categories from "./Categories";
+import Articles from "./Articles";
 import axiosWithAuth from "./helpers/axiosWithAuth";
 
+const initialNewCategoryValue = "";
+
 const Manager = () => {
+  const [newCategoryValue, setNewCategoryValue] = useState(initialNewCategoryValue);
   const [userId] = useState(window.localStorage.getItem("userId"));
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [articles, setArticles] = useState([]);
+  
+
+  const getArticles = async () => {
+      axiosWithAuth().get(`https://pintereach-03.herokuapp.com/api/articles`)
+      .then(res => {
+        const usersArticles = res.data.filter(article => article.user_id == userId && article.category == selectedCategory);
+        setArticles(usersArticles);
+        console.log(articles);
+      })
+  }
+
+  const deleteArticle = (id) => {
+    axiosWithAuth().delete(`https://pintereach-03.herokuapp.com/api/articles/${id}`)
+    .then(res=>{
+      getArticles();
+    })
+    .catch(err=>{
+    });
+  }
 
   const getCategories = async () => {
     axiosWithAuth().get(`https://pintereach-03.herokuapp.com/api/categories`)
@@ -20,12 +46,30 @@ const Manager = () => {
     axiosWithAuth().post('https://pintereach-03.herokuapp.com/api/categories', category)
     .then(res=>{
       getCategories();
-      console.log(res)
     })
     .catch(err=>{
-      console.log(err)
     });
   }
+
+  const deleteCategory = (id) => {
+    axiosWithAuth().delete(`https://pintereach-03.herokuapp.com/api/categories/${id}`)
+    .then(res=>{
+      getCategories();
+    })
+    .catch(err=>{
+    });
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addCategory(newCategoryValue);
+  }
+
+    const onChange = (e) => {
+        let value = e.target.value;
+
+        setNewCategoryValue(value);
+    };
 
   useEffect(() => {
     getCategories();
@@ -33,33 +77,37 @@ const Manager = () => {
 
   return (
     <div id="main">
+
       <div className="add-article-btn">
         <button> Add Article </button>
       </div>
-      <AddArticle categories={categories}/>
+
+      <AddArticleForm categories={categories}/>
+
       <section className="middle-section">
-        <div className="your-board">
-          <h4>Your Board</h4>
-          <ul>
-            {categories.map((category) => <li>{category.name}</li>)}
-          </ul>
-        </div>
-        <div className="article-cards">
-          <div className="card">
-            <button className="btn">Article 1</button>
-          </div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            label="Category"
+            name="category"
+            value={newCategoryValue}
+            placeholder="Enter a new category..."
+            onChange={onChange}
+          />
+          <button>Add New Category</button>
+        </form>
+        <Categories categories={categories}
+        setSelectedCategory={setSelectedCategory}
+        deleteCategory={deleteCategory}
+        getArticles={getArticles}/>
 
-          <div className="card">
-            <button className="btn">Article 2</button>
-          </div>
+        <Articles selectedCategory={selectedCategory}
+        articles={articles}
+        deleteArticle={deleteArticle}/>
 
-          <div className="card">
-            <button className="btn">Article 3</button>
-          </div>
-        </div>
       </section>
-      {/* section ends here */}
-    </div> // #main div end
+
+    </div>
   );
 };
 
