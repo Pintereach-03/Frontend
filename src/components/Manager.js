@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AddArticle from "./AddArticle";
 import axiosWithAuth from "./helpers/axiosWithAuth";
 
 const Manager = () => {
@@ -35,6 +36,7 @@ const Manager = () => {
       <div className="add-article-btn">
         <button> Add Article </button>
       </div>
+      <AddArticle categories={categories}/>
       <section className="middle-section">
         <div className="your-board">
           <h4>Your Board</h4>
