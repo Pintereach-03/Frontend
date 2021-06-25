@@ -19,7 +19,7 @@ const Navbar = (props) => {
                 { isLogin ?  <Link to="/manager">MANAGER</Link> : null }
                 { !isLogin ? <Link to="/login">LOGIN</Link> : null }
                 { !isLogin ? <Link to="/register">SIGN UP</Link> : null }
-                { isLogin ?  <Link to="/home" onClick={logoutFunc}>SIGN OUT</Link> : null }
+                { isLogin ?  <Link to="/" onClick={logoutFunc}>SIGN OUT</Link> : null }
                 
             </div>
         </header>

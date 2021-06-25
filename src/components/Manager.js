@@ -78,10 +78,6 @@ const Manager = () => {
   return (
     <div id="main">
 
-      <div className="add-article-btn">
-        <button> Add Article </button>
-      </div>
-
       <AddArticleForm categories={categories}/>
 
       <section className="middle-section">
