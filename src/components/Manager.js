@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "./helpers/axiosWithAuth";
 
+import "../Styles/ManagerPage.css";
+
 const Manager = () => {
   const [userId] = useState(window.localStorage.getItem("userId"));
   const [categories, setCategories] = useState([]);
@@ -10,21 +12,21 @@ const Manager = () => {
     .then(res => {
       const usersCategories = res.data.filter(category => category.user_id == userId);
       setCategories(usersCategories);
-    })
-  }
+    });
+  };
 
   const addCategory = (categoryName) => {
-    const category = { name: categoryName }
+    const category = { name: categoryName };
 
     axiosWithAuth().post('https://pintereach-03.herokuapp.com/api/categories', category)
     .then(res=>{
       getCategories();
-      console.log(res)
+      console.log(res);
     })
     .catch(err=>{
-      console.log(err)
+      console.log(err);
     });
-  }
+  };
 
   useEffect(() => {
     getCategories();
